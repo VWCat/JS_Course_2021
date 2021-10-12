@@ -5,6 +5,7 @@
 //   console.log(`FALSE`);
 // }
 // console.log(`Start`);
+
 // const value = 3;
 
 // if (value > 4) {
@@ -110,6 +111,10 @@
 //     console.log(`Неизвестный пользователь`);
 // }
 
+//**********************************
+//********************************** Оператор логическое ИЛИ ||
+//**********************************
+
 // const a = null;
 // const b = "";
 // let result1 = a || b; // result1 = 1
@@ -121,7 +126,11 @@
 // let result3 = false || "" || 0; // result3 = 0
 // console.log(result3);
 
-// ++++++++++++++++ оператор || возвращает первый операнд, который булево преобразуется в TRUE, если их нет, то значение первого операнда
+// ++++++++++++++++ оператор || возвращает первый операнд, который булево преобразуется в TRUE, если их нет, то значение последнего операнда
+
+//**********************************
+//********************************** Оператор логическое И &&
+//**********************************
 
 // const a = 0;
 // const b = 1;
@@ -131,8 +140,9 @@
 // let result2 = b && true && "value"; // result2 = “value”
 // console.log(result2);
 
-// ++++++++++++++++ оператор && возвращает первый операнд, который булево преобразуется в FALSE, если их нет, то значение первого операнда
+// ++++++++++++++++ оператор && возвращает первый операнд, который булево преобразуется в FALSE, если их нет, то значение последнего операнда
 
+// **********************   Поиск максимального значения из трёх
 // const aLength = 3;
 // const bLength = 37;
 // const cLength = 35;
@@ -148,30 +158,37 @@
 // }
 // console.log(maxLength);
 
-// (a && b) || (c && d);
+// (a && b) || (c && d); // Приоритет логических операций: сначала !(НЕ), затем И (&&) и только потом ИЛИ (||)
 
-// null || 0 || "" || undefined;
-// "яблоко" && true && null && 1;
-// 0 || (true && "false") || null;
-// (0 && true) || ("false" && null);
-// !0 && !!1;
-// !(null || (!"апельсин" && true));
+// null || 0 || "" || undefined; // undefined -- последний false, так как true не обнаружено
+// "яблоко" && true && null && 1; // null -- первое значение, преобразуемое в false
+// 0 || (true && "false") || null; // "false" -- (true && "false") => "false", т.к. оба преобразуются в true, но возвращается последний.
+//                                 // 0 || "false" || null => "false" -- первое значение, преобразуемое в true
+// (0 && true) || ("false" && null); // null -- (0 && true) => 0, ("false" && null) => null; 0 || null => null
+// !0 && !!1; // true -- !0 => true, !!1 => true; true && true => true
+// !(null || (!"апельсин" && true)); true -- !"апельсин" => false, false && true => false, null || false => false, !false => true
 
+//********************************* Циклы
+
+// Цикл WHILE
 // let i = 0;
 // while (i < 10) {
 //   console.log(i++);
 // }
 
+// Цикл DO-WHILE
 // do {
 //   console.log(i++);
 // } while (i < 10);
 
+// Бесконечный цикл WHILE с прерыванием внутри
 // let i = 0;
 // while (true) {
 //   console.log(i++);
 //   if (i > 10) break;
 // }
 
+// Цикл FOR
 // for (let i = 0; i <= 3; i++) {
 //   if (i === 2) continue;
 //   console.log(i); //0,1,3
@@ -221,23 +238,28 @@
 // Год первого полета человека в космос и количество итераций которое потребовалось для поиска.
 // Количество високосных годов принадлежащих данному отрезку и количество итераций которое потребовалось для поиска.
 
-const startYear = 1800;
-const endYear = 2020;
+const startYear = 2020;
+const endYear = 1800;
 const firstFlightYear = 1961;
 let iterToFlight = 0;
 let iterToLeap = 0;
 let leapYearCount = 0;
 
-for (let nowYear = startYear; nowYear <= endYear; nowYear++) {
-  if (nowYear < firstFlightYear) iterToFlight++;
-  if (nowYear == firstFlightYear)
+for (let nowYear = startYear; nowYear >= endYear; nowYear--) {
+  if (nowYear > firstFlightYear) iterToFlight++;
+  if (nowYear == firstFlightYear) {
     console.log(`Год первого полета человека в космос: ${nowYear}`);
+    break;
+  }
+}
+
+for (let nowYear = startYear; nowYear >= endYear; nowYear--) {
   if (nowYear % 4 == 0 && nowYear % 100 != 0) leapYearCount++;
   iterToLeap++;
 }
 
 console.log(
-  `Количество итераций которое потребовалось для поиска года первого полёта: ${iterToFlight}, 
-количество високосных годов принадлежащих данному отрезку: ${leapYearCount}, 
-количество итераций которое потребовалось для поиска високосных годов: ${iterToLeap}`
+  `Количество итераций, которое потребовалось для поиска года первого полёта: ${iterToFlight}, 
+Количество високосных годов принадлежащих данному отрезку: ${leapYearCount}, 
+Количество итераций, которое потребовалось для поиска високосных годов: ${iterToLeap}`
 );
