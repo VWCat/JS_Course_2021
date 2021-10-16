@@ -424,7 +424,7 @@ for (let i = 0; i <= 8; i++) {
   str += arr[i] + `-`;
 }
 
-console.log("%c%s", "color: green; font: 1.2rem/1 Tahoma;", str);
+console.log(str);
 
 //------- Составьте массив дней недели. С помощью цикла for выведите все дни недели, а выходные дни выведите жирным.
 
