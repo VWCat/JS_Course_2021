@@ -62,7 +62,8 @@ console.log(isSumGreaterTen(5, 5));
 // Сделайте функцию, которая параметром принимает число и проверяет - отрицательное оно или нет. Если отрицательное - пусть функция вернет true, а если нет - false.
 
 function isNegative(num) {
-  return num < 0 ? true : false;
+  //return num < 0 ? true : false;
+  return num < 0;
 }
 
 console.log(isNegative(-1));
@@ -70,8 +71,9 @@ console.log(isNegative(-1));
 // Сделайте функцию isNumberInRange, которая параметром принимает число и проверяет, что оно больше нуля и меньше 10. Если это так - пусть функция возвращает true, если не так- false.
 
 function isNumberInRange(num) {
-  if (num > 0 && num < 10) return true;
-  return false;
+  // if (num > 0 && num < 10) return true;
+  // return false;
+  return num > 0 && num < 10;
 }
 
 console.log(isNumberInRange(10));
