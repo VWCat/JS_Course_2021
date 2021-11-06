@@ -26,13 +26,16 @@ function currentSums(numbers) {
 
 //------------------------------ 3. Напишите код, который получает из массива чисел новый массив, содержащий пары чисел, которые в сумме должны быть равны семи: (0:7), (1:6) и т.д.
 
-var arr = [0, 1, 2, 3, 4, 5, 6, 7];
+var arr = [0, 1, 6, 7, 3, 2, 4, 5];
 
 function sumSeven(numbers) {
-  return numbers.map((val) => `${val}:${7 - val}`);
+  // return numbers.map((val) => `${val}:${7 - val}`);
+  return numbers
+    .filter((val, idx, arr) => arr.includes(7 - val, idx))
+    .map((val) => `${val}:${7 - val}`);
 }
 
-// console.log(sumSeven(arr));
+console.log(sumSeven(arr));
 
 //------------------------------ 4. Перед вами переменная, содержащая строку. Напишите код, создащий массив, который будет состоять из первых букв слов строки `str`.
 
