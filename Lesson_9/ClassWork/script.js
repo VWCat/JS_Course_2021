@@ -78,18 +78,97 @@
 
 // console.log(cardOne.show());
 
-class Samurai {
-  constructor(name) {
+// class Samurai {
+//   constructor(name) {
+//     this.name = name;
+//   }
+//   hello() {
+//     alert(this.name);
+//   }
+// }
+
+// let shogun = new Samurai("Vasya");
+// console.log(shogun);
+// console.log(shogun.__proto__);
+// console.log(shogun.__proto__.__proto__);
+// console.log(shogun.__proto__.constructor);
+// console.log(shogun.__proto__.constructor.__proto__);
+
+// class Parent {
+//   constructor(name) {
+//     this.name = name;
+//   }
+
+//   sayName() {
+//     return `Hello, my name is ${this.name}!`;
+//   }
+// }
+
+// // const firstParent = new Parent("Max");
+// // console.log(firstParent);
+// // console.log(firstParent.sayName());
+
+// class Child extends Parent {
+//   constructor(name, lastName) {
+//     super(name);
+//     // this.lastName = lastName;
+//   }
+//   sayName() {
+//     console.log(`This in internal method!!!`);
+//   }
+//   sayFullName() {
+//     const nameString = `${super.sayName()} ${this.lastName}`;
+//     return `My full name is ${nameString}`;
+//   }
+
+//   get lastName() {
+//     return this._lastName;
+//   }
+//   set lastName(lastName) {
+//     this._lastName = lastName;
+//   }
+
+//   getLastName() {
+//     return this.lastName;
+//   }
+// }
+
+// const firstChild = new Child("Ivan", "Petrov");
+
+// // console.log(firstChild);
+// // console.log(firstChild.sayFullName());
+// // console.log(firstChild.sayName());
+// firstChild.lastName = "Petrov";
+// console.log(firstChild.getLastName());
+// console.log(firstChild.lastName);
+
+class People {
+  constructor(name, surname) {
     this.name = name;
+    this.surname = surname;
   }
-  hello() {
-    alert(this.name);
+  getFullName() {
+    return `${this.name} ${this.surname}`;
   }
 }
 
-let shogun = new Samurai("Vasya");
-console.log(shogun);
-console.log(shogun.__proto__);
-console.log(shogun.__proto__.__proto__);
-console.log(shogun.__proto__.constructor);
-console.log(shogun.__proto__.constructor.__proto__);
+class Worker extends People {
+  constructor(name, surname, rate, days) {
+    super(name, surname);
+    this.rate = rate;
+    this.days = days;
+  }
+  getSalary() {
+    return this.rate * this.days;
+  }
+}
+
+const workerOne = new Worker("Vasilii", "Pupkin", 500, 20);
+const workerTwo = new Worker("Darth", "Vader", 666666, 1);
+
+console.log(
+  `Работник ${workerOne.getFullName()} заработал ${workerOne.getSalary()} у.е.`
+);
+console.log(
+  `Работник ${workerTwo.getFullName()} заработал ${workerTwo.getSalary()} у.е.`
+);
